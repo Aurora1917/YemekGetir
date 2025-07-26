@@ -10,7 +10,9 @@
 
     <modules>
         <module>configserver</module>
-        <module>user-service</module>
+        <module>userservice</module>
+        <module>discoveryservice</module>
+        <module>common</module>
     </modules>
 
     <dependencyManagement>
@@ -24,9 +26,19 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+        </dependency>
+    </dependencies>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>23</java.version>
     </properties>
 
     <build>

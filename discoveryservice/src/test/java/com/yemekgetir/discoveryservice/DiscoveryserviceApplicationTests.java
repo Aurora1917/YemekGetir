@@ -1,10 +1,10 @@
-package com.user_service.userservice;
+package com.yemekgetir.discoveryservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UserserviceApplicationTests {
+class DiscoveryserviceApplicationTests {
 
 	@Test
 	void contextLoads() {
