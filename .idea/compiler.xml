@@ -12,6 +12,15 @@
         <module name="restaurantservice" />
         <module name="userservice" />
       </profile>
+      <profile name="Annotation profile for menuservice" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+        </processorPath>
+        <module name="menuservice" />
+      </profile>
       <profile name="Annotation profile for YemekGetir Parent Project" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -29,6 +38,7 @@
       <module name="common" options="-parameters" />
       <module name="configserver" options="-parameters" />
       <module name="discoveryservice" options="-parameters" />
+      <module name="menuservice" options="-parameters" />
       <module name="restaurantservice" options="-parameters" />
       <module name="userservice" options="-parameters" />
       <module name="yemekgetir" options="-parameters" />

@@ -4,12 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Bu, Spring Boot projeleri için temel konfigürasyonları sağlayan ana parent'tır -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.3.3</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
     <groupId>com.yemekgetir</groupId>
@@ -20,7 +19,6 @@
     <name>YemekGetir Parent Project</name>
     <description>Ana POM dosyası, tüm alt modüller için ortak konfigürasyonları ve bağımlılıkları yönetir.</description>
 
-    <!-- Bütün alt modüller burada listelenir -->
     <modules>
         <module>common</module>
         <module>configserver</module>
@@ -28,9 +26,9 @@
         <module>apigateway</module>
         <module>userservice</module>
         <module>restaurantservice</module>
+        <module>menuservice</module>
     </modules>
 
-    <!-- Bütün versiyonlar burada merkezi olarak yönetilir -->
     <properties>
         <java.version>21</java.version>
         <spring-cloud.version>2023.0.2</spring-cloud.version>
@@ -40,7 +38,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Spring Cloud bağımlılıklarını yönetmek için BOM (Bill of Materials) -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -49,14 +46,12 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- Common modülü, diğer modüller tarafından kullanılabilir -->
             <dependency>
                 <groupId>com.yemekgetir</groupId>
                 <artifactId>common</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
-            <!-- JWT Kütüphaneleri -->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-api</artifactId>
@@ -72,16 +67,42 @@
                 <artifactId>jjwt-jackson</artifactId>
                 <version>${jjwt.version}</version>
             </dependency>
-
-            <!-- PostgreSQL Driver -->
             <dependency>
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${postgresql.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>3.3.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>3.3.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.34</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -91,8 +112,8 @@
             <artifactId>spring-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>jakarta.ws.rs</groupId>
-            <artifactId>jakarta.ws.rs-api</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -103,14 +124,15 @@
     <build>
         <pluginManagement>
             <plugins>
-                <!--
-                    HATA DÜZELTMESİ:
-                    spring-boot-maven-plugin'i burada tekrar tanımlamaya gerek yoktur.
-                    Çünkü spring-boot-starter-parent POM'u, bu plugin'i zaten kendi
-                    pluginManagement bölümünde doğru versiyon ile tanımlamaktadır.
-                    Bu gereksiz tanımın kaldırılması, ${spring-boot.version}
-                    çözümleneme hatasını giderecektir.
-                -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.11.0</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
@@ -124,7 +146,6 @@
             </plugin>
         </plugins>
     </build>
-
     <repositories>
         <repository>
             <id>spring-milestones</id>
@@ -135,6 +156,4 @@
             </snapshots>
         </repository>
     </repositories>
-
 </project>
-
