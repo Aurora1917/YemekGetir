@@ -3,7 +3,8 @@ package com.yemekgetir.userservice.entity;
 
 import jakarta.persistence.*;
 
-import javax.management.relation.Role;
+import com.yemekgetir.userservice.entity.Role;
+
 
 @Entity
 @Table(name = "users")
@@ -11,7 +12,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userid;
+    private Long userid;
 
     @Column(nullable = false)
     private String username;
@@ -28,11 +29,11 @@ public class User {
 
 
 
-    public int getUserid() {
+    public Long getUserid() {
         return userid;
     }
 
-    public void setUserid(int userid) {
+    public void setUserid(Long userid) {
         this.userid = userid;
     }
 

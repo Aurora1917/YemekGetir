@@ -16,20 +16,15 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User registerUser(User user)
-    {
+    public User registerUser(User user) {
         return userRepository.save(user);
     }
-
 
     public Optional<User> getUserById(Long userId) {
         return userRepository.findById(userId);
     }
 
-    public void deleteUserById(Long userId)
-    {
+    public void deleteUserById(Long userId) {
         userRepository.deleteById(userId);
     }
-
 }
-

@@ -1,8 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Ana projeyi parent olarak belirtiyoruz. -->
     <parent>
         <groupId>com.yemekgetir</groupId>
         <artifactId>yemekgetir</artifactId>
@@ -12,24 +14,22 @@
 
     <artifactId>common</artifactId>
     <name>common</name>
+    <description>Ortak sınıfları ve yardımcı araçları içeren modül.</description>
 
     <dependencies>
-        <!-- JWT 0.11.5 için API, impl ve jackson desteği ayrı ayrı eklenir -->
+        <!-- JWT Kütüphaneleri (Versiyonlar ana POM'dan geliyor) -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
-            <version>0.11.5</version>
         </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-impl</artifactId>
-            <version>0.11.5</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-jackson</artifactId>
-            <version>0.11.5</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -43,16 +43,39 @@
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
-            <version>6.0.0</version>
-            <scope>provided</scope>
+            <scope>provided</scope> <!-- Bu bağımlılık sunucu tarafından sağlanacağı için scope 'provided' olmalı -->
         </dependency>
 
-        <!-- Lombok (varsa) -->
+        <!-- Lombok (Versiyon ana POM'dan geliyor) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
     </dependencies>
+
+    <!--
+    Bu modül bir kütüphane olduğu için spring-boot-maven-plugin'e genellikle ihtiyaç duymaz.
+    Eğer tek başına çalıştırılabilir bir jar oluşturmayacaksa build bölümü boş bırakılabilir.
+    -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
