@@ -7,6 +7,22 @@
   <component name="PersistenceUnitSettings">
     <persistence-units>
       <persistence-unit moduleName="yemekgetir" name="Default" />
+      <persistence-unit moduleName="restaurantservice" name="Default">
+        <packages>
+          <package value="com.yemekgetir.restaurantservice" />
+        </packages>
+      </persistence-unit>
+      <persistence-unit moduleName="menuservice" name="Default">
+        <packages>
+          <package value="com.yemekgetir.menuservice" />
+        </packages>
+      </persistence-unit>
+      <persistence-unit moduleName="userservice" name="Default">
+        <packages>
+          <package value="com.yemekgetir.userservice" />
+        </packages>
+      </persistence-unit>
+      <persistence-unit moduleName="common" name="Default" />
     </persistence-units>
   </component>
 </project>

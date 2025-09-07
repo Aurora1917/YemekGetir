@@ -29,13 +29,6 @@ public class Restaurant {
     @Column
     private Long menuId;
 
-    public Long getMenuId() {
-        return menuId;
-    }
-
-    public void setMenuId(Long menuId) {
-        this.menuId = menuId;
-    }
 
     public Long getId() {
         return Id;

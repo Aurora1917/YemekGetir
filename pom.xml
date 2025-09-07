@@ -27,6 +27,7 @@
         <module>userservice</module>
         <module>restaurantservice</module>
         <module>menuservice</module>
+        <module>orderservice</module>
     </modules>
 
     <properties>

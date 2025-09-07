@@ -10,9 +10,9 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>menuservice</artifactId>
-	<name>menuservice</name>
-	<description>YemekGetir Project - Menu Service</description>
+	<artifactId>restaurantservice</artifactId>
+	<name>restaurantservice</name>
+
 
 	<properties>
 	</properties>
