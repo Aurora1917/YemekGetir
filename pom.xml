@@ -23,7 +23,6 @@
         <module>common</module>
         <module>configserver</module>
         <module>discoveryservice</module>
-        <module>apigateway</module>
         <module>userservice</module>
         <module>restaurantservice</module>
         <module>menuservice</module>

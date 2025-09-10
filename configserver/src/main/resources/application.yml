@@ -1,9 +1,34 @@
+# Config Server Uygulama Yapılandırması
+
 server:
   port: 8888
 
 spring:
+  application:
+    name: configserver
   cloud:
     config:
       server:
         git:
-          uri: git@github.com:Aurora1917/YemekGetirConfig.git
+          uri: https://github.com/Aurora1917/YemekGetirConfig
+          default-label: main
+          username: ${GIT_USERNAME}
+          password: ${GIT_PASSWORD}
+          clone-on-start: true
+
+# Eureka Client ayarları
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discoveryservice:8761/eureka/
+
+# In configserver/src/main/resources/application.yml
+
+# ... (mevcut server, spring, eureka ayarlarınız) ...
+
+# Actuator endpoint'lerini web üzerinden erişime açar.
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info" # healthcheck için "health" yeterlidir.

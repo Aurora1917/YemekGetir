@@ -1,13 +1,25 @@
+# Bu dosya, userservice'in tüm temel yapılandırmalarını içerir.
+
 spring:
+  # Uygulama adı
   application:
-    name: menuservice
+    name: order-service
+
+  # Spring Cloud Config Server'a bağlanma ayarları
   config:
-    import: optional:configserver:http://localhost:8888
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://configserver:8888
+
+  # Database bağlantı ayarları
   datasource:
     url: jdbc:postgresql://localhost:5432/order_db
     username: postgres
     password: ubuntu123puro
     driver-class-name: org.postgresql.Driver
+
+  # JPA (Hibernate) ayarları
   jpa:
     hibernate:
       ddl-auto: update
@@ -17,7 +29,8 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
+# Eureka Client ayarları
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://discoveryservice:8761/eureka/

@@ -5,32 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81f923c2-6da7-4c5e-8e50-1916eb6f92af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/yemekgetir/DTO/MenuItemDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/menuservice/src/main/java/com/yemekgetir/menuservice/error/ResourceNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orderservice/src/main/java/com/yemekgetir/orderservice/controller/OrderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orderservice/src/main/java/com/yemekgetir/orderservice/entity/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orderservice/src/main/java/com/yemekgetir/orderservice/entity/OrderItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orderservice/src/main/java/com/yemekgetir/orderservice/exception/ResourceNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orderservice/src/main/java/com/yemekgetir/orderservice/repository/OrderRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orderservice/src/main/java/com/yemekgetir/orderservice/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/YemekGetir.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/configserver/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discoveryservice/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/menuservice/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orderservice/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orderservice/src/main/java/com/yemekgetir/orderservice/config/RestTemplateConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurantservice/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userservice/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apigateway/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apigateway/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apigateway/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apigateway/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apigateway/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apigateway/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apigateway/src/main/java/com/yemekgetir/apigateway/ApigatewayApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apigateway/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apigateway/src/test/java/com/yemekgetir/apigateway/ApigatewayApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/yemekgetir/security/JwtAuthenticationFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/yemekgetir/security/JwtUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/yemekgetir/security/JwtAuthenticationFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/yemekgetir/security/JwtUtil.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/common-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/common-1.0.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menuservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/menuservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menuservice/src/main/java/com/yemekgetir/menuservice/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/menuservice/src/main/java/com/yemekgetir/menuservice/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menuservice/src/main/java/com/yemekgetir/menuservice/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/menuservice/src/main/java/com/yemekgetir/menuservice/service/MenuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menuservice/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/menuservice/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configserver/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configserver/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configserver/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/configserver/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orderservice/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/orderservice/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orderservice/src/test/java/com/yemekgetir/orderservice/OrderserviceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/orderservice/src/test/java/com/yemekgetir/orderservice/OrderserviceApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurantservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/restaurantservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurantservice/src/main/java/com/yemekgetir/restaurantservice/entity/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurantservice/src/main/java/com/yemekgetir/restaurantservice/entity/Restaurant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yemekgetir.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/userservice/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/userservice/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +69,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Docker.docker-compose.yml.orderservice: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -78,6 +86,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/orderservice/src/main/java/com/yemekgetir/orderservice" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -93,6 +102,30 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.orderservice: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="orderservice" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yml.orderservice: Compose Deployment" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="StructureViewState">
