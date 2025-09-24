@@ -1,5 +1,6 @@
 package com.yemekgetir.menuservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.math.BigDecimal;
@@ -19,6 +20,7 @@ public class MenuItem {
 
     @ManyToOne
     @JoinColumn(name = "menu_id")
+    @JsonIgnore
     private Menu menu;
 
     public Long getId() {

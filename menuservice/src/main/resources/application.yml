@@ -2,9 +2,9 @@ spring:
   application:
     name: menuservice
   config:
-    import: optional:configserver:http://localhost:8888
+    import: optional:configserver:http://configserver:8888
   datasource:
-    url: jdbc:postgresql://localhost:5432/menu_db
+    url: jdbc:postgresql://postgres_menu_db:5432/menu_db
     username: postgres
     password: ubuntu123puro
     driver-class-name: org.postgresql.Driver
@@ -20,4 +20,6 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://discoveryservice:8761/eureka
+server:
+  port: 8084

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -65,26 +66,33 @@ public class OrderService {
         Order existingOrder = orderRepository.findById(orderId)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found: ID: " + orderId));
 
-        // 2. Silinecek orderItem'ı bul
+
         Optional<OrderItem> itemToRemove = existingOrder.getOrderItems().stream()
                 .filter(item -> item.getMenuItemId().equals(menuItemId))
                 .findFirst();
 
-        // 3. Eğer item bulunursa, silme işlemlerini yap
+
         if (itemToRemove.isPresent()) {
             OrderItem item = itemToRemove.get();
-            // Toplam tutarı güncelle
+
             BigDecimal itemTotal = item.getPrice().multiply(new BigDecimal(item.getQuantity()));
             existingOrder.setTotalAmount(existingOrder.getTotalAmount().subtract(itemTotal));
 
-            // Item'ı listeden ve veritabanından sil
             existingOrder.getOrderItems().remove(item);
         } else {
             // Eğer item bulunamazsa hata fırlat
             throw new ResourceNotFoundException("OrderItem not found in order: MenuItem ID: " + menuItemId);
         }
 
-        // 4. Güncellenmiş siparişi kaydet
         return orderRepository.save(existingOrder);
+    }
+
+    public Order getOrderById(Long orderId) {
+        return orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Order not found: ID: " + orderId));
+    }
+
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
     }
 }

@@ -1,25 +1,80 @@
-version: '3.8'
-
 services:
-  # PostgreSQL Database
-  postgres:
+  # Her servis için ayrı bir PostgreSQL veritabanı oluşturuyoruz.
+  postgres_user_db:
     image: postgres:15-alpine
-    container_name: postgres
+    container_name: postgres_user_db
     environment:
-      POSTGRES_DB: yemekgetir
+      POSTGRES_DB: user_db
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: ubuntu123puro
     ports:
       - "5434:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_user_data:/var/lib/postgresql/data
+    networks:
+      - yemek-getir-network
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 5s
       retries: 5
+
+  postgres_restaurant_db:
+    image: postgres:15-alpine
+    container_name: postgres_restaurant_db
+    environment:
+      POSTGRES_DB: restaurant_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ubuntu123puro
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_restaurant_data:/var/lib/postgresql/data
     networks:
       - yemek-getir-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  postgres_order_db:
+    image: postgres:15-alpine
+    container_name: postgres_order_db
+    environment:
+      POSTGRES_DB: order_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ubuntu123puro
+    ports:
+      - "5436:5432"
+    volumes:
+      - postgres_order_data:/var/lib/postgresql/data
+    networks:
+      - yemek-getir-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  postgres_menu_db:
+    image: postgres:15-alpine
+    container_name: postgres_menu_db
+    environment:
+      POSTGRES_DB: menu_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ubuntu123puro
+    ports:
+      - "5437:5432"
+    volumes:
+      - postgres_menu_data:/var/lib/postgresql/data
+    networks:
+      - yemek-getir-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   discoveryservice:
     build:
@@ -75,13 +130,14 @@ services:
       retries: 5
       start_period: 60s
     environment:
+      # Veritabanı bağlantı URL'ini ilgili servise yönlendiriyoruz.
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_user_db:5432/user_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=ubuntu123puro
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discoveryservice:8761/eureka
       - SPRING_PROFILES_ACTIVE=dev
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/yemekgetir
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
     depends_on:
-      postgres:
+      postgres_user_db:
         condition: service_healthy
       discoveryservice:
         condition: service_healthy
@@ -105,13 +161,14 @@ services:
       retries: 5
       start_period: 60s
     environment:
+      # Veritabanı bağlantı URL'ini ilgili servise yönlendiriyoruz.
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_restaurant_db:5432/restaurant_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=ubuntu123puro
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discoveryservice:8761/eureka
       - SPRING_PROFILES_ACTIVE=dev
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/yemekgetir
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
     depends_on:
-      postgres:
+      postgres_restaurant_db:
         condition: service_healthy
       discoveryservice:
         condition: service_healthy
@@ -127,21 +184,22 @@ services:
       dockerfile: Dockerfile
     container_name: orderservice
     ports:
-      - "8083:8083"
+      - "8083:8080"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8083/actuator/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
       interval: 30s
       timeout: 10s
       retries: 5
       start_period: 60s
     environment:
+      # Veritabanı bağlantı URL'ini ilgili servise yönlendiriyoruz.
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_order_db:5432/order_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=ubuntu123puro
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discoveryservice:8761/eureka
       - SPRING_PROFILES_ACTIVE=dev
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/yemekgetir
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
     depends_on:
-      postgres:
+      postgres_order_db:
         condition: service_healthy
       discoveryservice:
         condition: service_healthy
@@ -165,13 +223,14 @@ services:
       retries: 5
       start_period: 60s
     environment:
+      # Veritabanı bağlantı URL'ini ilgili servise yönlendiriyoruz.
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_menu_db:5432/menu_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=ubuntu123puro
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discoveryservice:8761/eureka
       - SPRING_PROFILES_ACTIVE=dev
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/yemekgetir
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
     depends_on:
-      postgres:
+      postgres_menu_db:
         condition: service_healthy
       discoveryservice:
         condition: service_healthy
@@ -186,4 +245,7 @@ networks:
     driver: bridge
 
 volumes:
-  postgres_data:
+  postgres_user_data:
+  postgres_restaurant_data:
+  postgres_order_data:
+  postgres_menu_data:

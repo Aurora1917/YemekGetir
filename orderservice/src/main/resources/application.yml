@@ -1,5 +1,8 @@
 # Bu dosya, userservice'in tüm temel yapılandırmalarını içerir.
 
+server:
+  port: 8080
+
 spring:
   # Uygulama adı
   application:
@@ -14,7 +17,8 @@ spring:
 
   # Database bağlantı ayarları
   datasource:
-    url: jdbc:postgresql://localhost:5432/order_db
+    # Docker ortamında çalışmak için, localhost yerine veritabanı servis adını kullanıyoruz.
+    url: jdbc:postgresql://postgres_order_db:5432/order_db
     username: postgres
     password: ubuntu123puro
     driver-class-name: org.postgresql.Driver
