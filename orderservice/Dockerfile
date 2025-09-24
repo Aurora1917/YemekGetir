@@ -2,7 +2,7 @@
 FROM openjdk:21-jdk-slim
 
 # JAR dosyasının adı
-ARG JAR_FILE=target/orderservice-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=target/orderservice-1.0.0-SNAPSHOT.jar
 
 # JAR dosyasını konteynerin içine kopyala
 COPY ${JAR_FILE} app.jar
